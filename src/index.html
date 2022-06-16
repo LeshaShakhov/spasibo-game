@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0 viewport-fit=cover'/>
+    <title>Сыграйте и получите возможность выиграть суперпризы</title>
+    <link rel="stylesheet" href="./fonts.css"/>
+    <link rel="stylesheet" href="./style.css"/>
+    <!-- Google Analytics -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-128376162-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
+</head>
+<body onload="init()">
+
+<div class="preload">
+    <img src="img/girl_sprites/all/run/baba_sprite.png"/>
+    <img src="img/girl_sprites/all/jump/jump.png"/>
+    <img src="img/girl_sprites/all/stand/standBy0001.png"/>
+    <img src="img/items/bonus1/bonus_00000.png" alt="">
+    <img src="img/items/bonus2/bonus02_00000.png" alt="">
+    <img src="img/items/bonus3/bonus03_00000.png" alt="">
+    <img src="img/game-panel/lvl1_name.svg" alt="">
+    <img src="img/game-panel/lvl2_name.svg" alt="">
+    <img src="img/game-panel/lvl3_name.svg" alt="">
+    <img src="img/game-panel/lvl4_name.svg" alt="">
+    <img src="img/game-panel/lvl1_icon.png" alt="">
+    <img src="img/game-panel/lvl2_icon.png" alt="">
+    <img src="img/game-panel/lvl3_icon.png" alt="">
+    <img src="img/game-panel/lvl4_icon.png" alt="">
+    <img src="img/game-panel/bar_1.png" alt="">
+    <img src="img/game-panel/bar_2.png" alt="">
+    <img src="img/game-panel/bar_3.png" alt="">
+    <img src="img/game-panel/bar_4.png" alt="">
+    <img src="img/game-panel/screens_desktop_logo.png" alt="">
+    <img src="img/messages/screens_desktop_logo.png" alt="">
+    <img src="img/messages/screens_start_start.png" alt="">
+    <img src="img/messages/jump.png" alt="">
+    <img src="img/messages/screens_start_start.png" alt="">
+    <img src="img/messages/prize.png" alt="">
+    <img src="img/messages/screens_start_c.png" alt="">
+    <img src="img/messages/screens_start_b.png" alt="">
+    <img src="img/messages/screens_start_bonus.png" alt="">
+    <img src="img/messages/screens_desktop_text.png" alt="">
+    <img src="img/messages/screens_desktop_QR.jpg" alt="">
+    <img src="img/messages/screens_rotate_text.png" alt="">
+    <img src="img/messages/screens_rotate_phone.png" alt="">
+    <img src="img/messages/screens_loose_text.png" alt="">
+    <img src="img/messages/screens_level_2_pig.png" alt="">
+    <img src="img/messages/screens_level_2_text.png" alt="">
+    <img src="img/messages/screens_level_3_eleph.png" alt="">
+    <img src="img/messages/screens_level_3_text.png" alt="">
+    <img src="img/messages/spasiboGame_screens_rules_whale.png" alt="">
+    <img src="img/messages/screens_level_4_text.png" alt="">
+    <img src="img/tiles/wall.png" alt="">
+    <img src="img/tiles/green-block.png" alt="">
+    <img src="img/tiles/green-block_before.png" alt="">
+    <img src="img/tiles/green-block_after.png" alt="">
+    <img src="img/tiles/yellow-block.png" alt="">
+    <img src="img/tiles/yellow-block_before.png" alt="">
+    <img src="img/tiles/yellow-block_after.png" alt="">
+    <img src="img/tiles/pink-block.png" alt="">
+    <img src="img/tiles/pink-block_before.png" alt="">
+    <img src="img/tiles/pink-block_after.png" alt="">
+    <img src="img/tiles/purple-block.png" alt="">
+    <img src="img/tiles/purple-block_before.png" alt="">
+    <img src="img/tiles/purple-block_after.png" alt="">
+    <img src="img/background/bg_1.jpg" alt="">
+    <img src="img/background/bg_2.jpg" alt="">
+    <img src="img/background/bg_3.jpg" alt="">
+    <img src="img/background/bg_4.jpg" alt="">
+    <img src="img/tiles/green-block_before.png" alt="">
+    <img src="img/tiles/green-block_after.png" alt="">
+    <img src="img/messages/screens_desktop_animals.png" alt="">
+    <img src="img/messages/spasiboGame_screens_desktop_bg.jpg" alt="">
+    <img src="img/messages/screens_reg_galka.png" alt="">
+    <img src="img/messages/screens_level_4_phone.png" alt="">
+    <img src="img/messages/screens_level_4_card.png" alt="">
+    <img src="img/messages/spasibogame_screens_winner_text.png" alt="">
+    <img src="img/messages/spasibogame_screens_winne_bg.png" alt="">
+    <img src="img/items/bang-seq/bang_sprite.png" alt="">
+    <img src="img/items/finish/finish_lvl1.png" alt="">
+    <img src="img/items/finish/finish_lvl2.png" alt="">
+    <img src="img/items/finish/finish_lvl3.png" alt="">
+    <img src="img/items/finish/finish_lvl4.png" alt="">
+</div>
+
+
+<div id="root">
+</div>
+<iframe style="display:block; width: 100%; height: 100%; position: absolute; left: 0; top: 0; right: 0; bottom: 0; z-index: 999999"
+        frameborder="0" src='data:text/html;charset=utf-8,<html><head><style>* {margin:0}</style></head><body>
+<div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: #32bc98">
+    <svg  version="1.1" id="Layer_1" class="preloader"  x="0px" y="0px"
+	viewBox="0 0 359.2 56.7" style="enable-background:new 0 0 359.2 56.7; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 50%" timelineBegin="onStart" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+</style>
+<g>
+	<path class="st0" d="M6.9,15.4V6.6h26.7v17.8h8.9V51H6.9v-8.9h26.7v-8.9H6.9v-8.9h17.8v-8.9H6.9z"/>
+	<path class="st0" d="M69.1,51V33.2h-8.9V51h-8.9V6.6H78V51H69.1z M69.1,15.4h-8.9v8.9h8.9V15.4z"/>
+	<path class="st0" d="M86.9,51V6.6h26.7v8.9H95.8V51H86.9z"/>
+	<path class="st0" d="M131.4,33.2V51h-8.9V6.6h26.7v26.7H131.4z M140.3,15.4h-8.9v8.9h8.9V15.4z"/>
+	<path class="st0" d="M175.8,42.1v-8.9h-17.8V6.6h8.9v17.8h8.9V6.6h8.9v35.6H175.8z M158.1,51v-8.9h17.8V51H158.1z"/>
+	<path class="st0" d="M193.6,15.4V6.6h26.7v17.8h8.9V51h-35.6v-8.9h26.7v-8.9h-26.7v-8.9h17.8v-8.9H193.6z"/>
+	<path class="st0" d="M255.9,51V33.2H247V51h-8.9V6.6h8.9v17.8h8.9v8.9h8.9V51H255.9z M255.9,24.3V6.6h8.9v17.8H255.9z"/>
+	<path class="st0" d="M291.5,51V33.2h-8.9V51h-8.9V6.6h26.7V51H291.5z M291.5,15.4h-8.9v8.9h8.9V15.4z"/>
+	<path class="st0" id="point1" opacity="0" d="M309.3,51v-8.9h8.9V51H309.3z">
+        <animate
+        attributeName="opacity"
+        dur="4s"
+        begin="0s"
+        fill="freeze"
+        id="point1-anim"
+        repeatCount="indefinite"
+         values=" 0; 1 ; 1; 0; 0"
+         keyTimes="0 ; 0.125 ; 0.625; 0.75; 1"/>
+    </path>
+	<path class="st0" id="point2" opacity="0" d="M327,51v-8.9h8.9V51H327z">
+        <animate
+        attributeName="opacity"
+        dur="4s"
+        fill="freeze"
+        begin="point1-anim.begin + 0.5s"
+        id="point2-anim"
+        repeatCount="indefinite"
+        values=" 0; 1 ; 1; 0; 0"
+         keyTimes="0 ; 0.125 ; 0.625; 0.75; 1"/>
+    </path>
+	<path class="st0" id="point3" opacity="0" d="M344.8,51v-8.9h8.9V51H344.8z">
+        <animate
+        attributeName="opacity"
+        dur="4s"
+        fill="freeze"
+        begin="point2-anim.begin + 0.5s"
+        id="point3-anim"
+        repeatCount="indefinite"
+        values=" 0; 1 ; 1; 0; 0"
+         keyTimes="0 ; 0.125 ; 0.625; 0.75; 1"/>
+    </path>
+</g>
+</svg>
+</div>'>
+</iframe>
+
+
+<div class="game-panel">
+    <div class="lives">
+    </div>
+    <div class="spacibo-bar">
+        <div class="balance-bar">
+            <div class="balance"></div>
+            <div class="progress">
+                <progress max="100" value="0"></progress>
+                <div class="progress-bg">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+        </div>
+        <div class="level-name"></div>
+    </div>
+
+    <img class="logo" src="img/game-panel/screens_desktop_logo.png" alt="">
+
+</div>
+<div class="message-box mobile">
+    <img class="logo" src="img/messages/screens_desktop_logo.png" alt="">
+    <div class="inner start-screen">
+        <div class="title">
+            <img src="img/messages/prize.png" class="prize" alt="">
+            ПРОХОДИТЕ УРОВНИ<br>
+            И ВЫИГРЫВАЙТЕ ЦЕННЫЕ ПРИЗЫ
+        </div>
+        <a class="start disable" href="javascript:void(0)">
+            <img src="img/messages/screens_start_start.png" alt="">
+        </a>
+        <div class="checkbox-container">
+            <input class="" type="checkbox" id="c2" name="cc"/>
+            <label for="c2" class="start-checkbox"><span></span>
+                <p>Я согласен с&nbsp;&nbsp;&nbsp;</p>
+            </label><a href="downloads/agreement.pdf" target="_blank">правилами проведения Акции</a>
+        </div>
+        <div class="tips">
+            <div>
+                <img src="img/messages/jump.png" alt="">
+                <p>Прыгайте<br>касаясь экрана</p>
+            </div>
+            <div>
+                <img src="img/messages/screens_start_c.png" alt="">
+                <p>Собирайте<br>игровые бонусы</p>
+            </div>
+            <div>
+                <img src="img/messages/screens_start_b.png" alt="">
+                <p>Избегайте препятствий,<br>чтобы не упасть в пропасть</p>
+            </div>
+            <div>
+                <img src="img/messages/screens_start_bonus.png" alt="">
+                <p>Выполняйте задания<br>и пройдите все 4 уровня</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="message-box desktop" style="display: none">
+    <div class="animals"></div>
+    <img class="logo" src="img/messages/screens_desktop_logo.png" alt="">
+    <div class="inner start-screen">
+        <img class="main-text" src="img/messages/screens_desktop_text.png" alt="">
+        <div class="container">
+            <img class="qr" src="img/messages/qr-code-url.gif" alt="">
+            <div>
+                <p>ПЕРЕХОДИТЕ</p>
+                <p>НА НОВЫЙ УРОВЕНЬ</p>
+                <a href="https://info.spasibosb.ru/levels/?utm_source=wifi_branding&utm_medium=special&utm_campaign=urovni_spasibo_do_jul-dec2018&utm_content=button" target="_blank">Подробнее</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="message-box zaglushka" style="opacity: 0">
+    <img class="logo" src="img/messages/screens_desktop_logo.png" alt="">
+    <div class="inner">
+        <div class="title">Игра доступна только<br>в альбомной ориентации</div>
+        <img class="rotate-text" src="img/messages/screens_rotate_text.png" alt="">
+        <img class="rotate-image" src="img/messages/screens_rotate_phone.png" alt="">
+    </div>
+</div>
+
+<div class="message-box loose-screen" style="display: none">
+    <img class="logo" src="img/messages/screens_desktop_logo.png" alt="">
+    <div class="inner">
+        <img class="main-text" src="img/messages/screens_loose_text.png" alt="">
+        <div class="title">
+            ПОПРОБУЙТЕ СНОВА
+        </div>
+        <a class="btn-start" href="javascript:void(0)">Начать</a>
+    </div>
+</div>
+
+<div class="message-box form" style="display: none">
+    <div class="prize">
+        <img src="img/messages/prize.png" alt="">
+        <p>ЗАРЕГИСТРИРУЙТЕСЬ, ПРОЙДИТЕ 4 УРОВНЯ<br>И УЧАСТВУЙТЕ В РОЗЫГРЫШЕ СУПЕРПРИЗОВ</p>
+    </DIV>
+    <img class="logo" src="img/messages/screens_desktop_logo.png" alt="">
+    <div class="inner level_0">
+        <div class="title">
+            РЕГИСТРАЦИЯ
+        </div>
+        <form action="" class="form1" method="post" id="form1">
+            <div>
+                <label for="name">Имя</label>
+                <input type="text" id="name" class="name" name="name" placeholder="">
+            </div>
+
+            <div>
+                <label for="email">E-mail</label>
+                <input type="email" class="email" id="email" name="email" placeholder="">
+            </div>
+
+            <div>
+                <label for="city">Город</label>
+                <div class="select">
+                    <select id="city" class="city select-hidden">
+                        <option value="Msk">Москва</option>
+                        <option value="Spb">Санкт-Петербург</option>
+                    </select>
+                    <div class="select-styled">Москва</div>
+                </div>
+                <ul class="select-options hidden">
+
+                </ul>
+            </div>
+
+            <button class="send-form disable" type="button" form="form1" value="Submit" id="button">Участвовать</button>
+
+            <div class="checkbox-container">
+                <input type="checkbox" id="c1" name="cc"/>
+                <label for="c1"><span class="form-checkbox"></span>Я согласен c&nbsp;<a href="downloads/agreement.pdf" target="_blank">правилами</a>&nbsp;акции.</label>
+            </div>
+        </form>
+        <script src="js/jquery.min.js" type="text/javascript"></script>
+        <script src="js/script.js" type="text/javascript"></script>
+    </div>
+</div>
+
+<div class="message-box level_2" style="display: none">
+    <img class="logo" src="img/messages/screens_desktop_logo.png" alt="">
+    <div class="inner">
+        <img class="totem-animal" src="img/messages/screens_level_2_pig.png" alt="">
+        <div class="title">
+            УРОВЕНЬ 2
+        </div>
+        <img class="main-text" src="img/messages/screens_level_2_text.png" alt="">
+        <div class="rules">
+            <p>Сумма на&nbsp;шкале увеличилась</p>
+            <br>
+            <p>Задание:</p>
+            <p>Сохранить на&nbsp;счету игровой банковской карты<br>сумму более 10&nbsp;000р.</p>
+            <br>
+            <p>У вас получится!</p>
+            <a class="btn-start" href="javascript:void(0)">Начать</a>
+        </div>
+    </div>
+</div>
+
+<div class="message-box level_3" style="display: none">
+    <img class="logo" src="img/messages/screens_desktop_logo.png" alt="">
+    <div class="inner">
+        <img class="totem-animal" src="img/messages/screens_level_3_eleph.png" alt="">
+        <div class="title">
+            УРОВЕНЬ 3
+        </div>
+        <img class="main-text" src="img/messages/screens_level_3_text.png" alt="">
+        <div class="rules">
+            <p>Будьте внимательны, сумма на&nbsp;шкале увеличилась,
+                а&nbsp;предмет<br>в&nbsp;виде телефона появляется дважды за&nbsp;уровень.
+            </p>
+            <br>
+            <p>Задания:</p>
+            <ol>
+                <li>
+                    Сохранить на&nbsp;счету игровой банковской карты<br>сумму более 10&nbsp;000р.
+                </li>
+                <li>
+                    Собрать элемент «Телефон» минимум один&nbsp;раз.&nbsp;&nbsp;<span class="phone"></span>
+                </li>
+            </ol>
+            <br>
+            <p>Вперед!</p>
+            <a class="btn-start" href="javascript:void(0)">Начать</a>
+        </div>
+    </div>
+</div>
+
+<div class="message-box level_4" style="display: none">
+    <img class="logo" src="img/messages/screens_desktop_logo.png" alt="">
+    <div class="inner">
+        <img class="totem-animal" src="img/messages/spasiboGame_screens_rules_whale.png" alt="">
+        <div class="title">
+            УРОВЕНЬ 4
+        </div>
+        <img class="main-text" src="img/messages/screens_level_4_text.png" alt="">
+        <div class="rules">
+            <p>Будьте внимательны, сумма на&nbsp;шкале увеличилась,
+                а&nbsp;предмет<br>в&nbsp;виде банковской карты появляется дважды за&nbsp;уровень.
+            </p>
+            <br>
+            <p>Задания:</p>
+            <ol>
+                <li>
+                    Сохранить на&nbsp;счету игровой банковской карты<br>сумму более10&nbsp;000 рублей.
+                </li>
+                <li>
+                    Собрать элемент «Телефон» минимум один раз.&nbsp;&nbsp;<span class="phone"></span>
+                    <br>
+                    <br>
+                </li>
+                <li>
+                    Взять элемент «Карта» минимум один раз.&nbsp;&nbsp;<span class="card"></span>
+                </li>
+            </ol>
+            <br>
+            <p>Желаем удачи!</p>
+            <a class="btn-start" href="javascript:void(0)">Начать</a>
+        </div>
+    </div>
+</div>
+
+<div class="message-box win" style="display: none">
+    <div class="animals"></div>
+    <img class="logo" src="img/messages/screens_desktop_logo.png" alt="">
+    <div class="inner">
+        <img class="main-text" src="img/messages/spasibogame_screens_winner_text.png" alt="">
+        <p>Теперь вы участвуете<br>в розыгрыше суперпризов.</p>
+    </div>
+</div>
+
+<script src="./mario.min.js"></script>
+<script>
+    var __scrollDisabled = true;
+    var disableScroll = function () {
+        __scrollDisabled = true;
+        toTop();
+    };
+    var enableScroll = function () {
+        __scrollDisabled = false;
+    };
+
+    var toTop = function () {
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+    };
+
+    window.addEventListener('scroll', function (evt) {
+        if (__scrollDisabled) {
+            evt.preventDefault();
+            evt.stopImmediatePropagation();
+            evt.stopPropagation();
+            toTop();
+
+        }
+    }, true);
+
+    var isFirstStart = true;
+    var level = 0;
+    var lives = 3;
+    var progressValue = 0;
+    var initialized, isPlay, resetTimer, currentBalance, currentBonusPrice, isMobile, gameStarted;
+    var desktopStart = document.querySelector('.desktop');
+    var mobileStart = document.querySelector('.mobile');
+    var iframe = document.querySelector('iframe');
+    var buttons = document.querySelectorAll('.inner .btn-start');
+    var looseMessage = document.querySelector('.loose-screen');
+    var form = document.querySelector('.form');
+    var level_1_doneMessage = document.querySelector('.level_2');
+    var level_2_doneMessage = document.querySelector('.level_3');
+    var level_3_doneMessage = document.querySelector('.level_4');
+    var level_4_doneMessage = document.querySelector('.win');
+    var gamePanel = document.querySelector('.game-panel');
+    var progressBar = document.querySelector('.progress progress');
+    var balanceconteaner = document.querySelector('.balance');
+    var liveContainer = document.querySelector('.game-panel .lives');
+    var btnSendForm = document.querySelector('.inner .send-form');
+    var checkBoxContainer = document.querySelector('.start-screen .checkbox-container');
+    var mql = window.matchMedia('(orientation: portrait)');
+    var startCheckbox = document.querySelector('.start-checkbox');
+    var formCheckbox = document.querySelector('.form-checkbox');
+    var nameInput = document.querySelector('.form1 .name');
+    var emailInput = document.querySelector('.form1 .email');
+    var start = document.querySelector('.start');
+    var mainMusic = new Howl({
+        src: ['./sounds/main-music.mp3', './sounds/main-music.ogg'],
+        loop: true,
+        volume: 0.25
+    });
+    function init() {
+        citySelect();
+        checkDevice();
+        iframe.style.display = "none";
+        if (isMobile) {
+            desktopStart.style.display = "none";
+            mobileStart.style.display = "block";
+            document.querySelector(".game-panel").style.display = "flex";
+            document.querySelector(".zaglushka").style.opacity = "1";
+            addListeners();
+        } else {
+            desktopStart.style.display = "block";
+            mobileStart.style.display = "none";
+        }
+    }
+    function checkDevice() {
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            isMobile = true;
+        } else {
+            isMobile = false;
+        }
+    }
+
+    function hideForm() {
+        form.style.display = "none";
+        level_1_doneMessage.style.display = "flex";
+    }
+
+    function addListeners() {
+        mario.game.levelDone.on(levelDone);
+        mario.game.loose.on(reduceLives);
+        mario.game.loose.on(gameEnd);
+        mario.game.changeScore.on(recountBalance);
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener("click", startGame, false);
+        }
+        mql.addListener(checkOrientation);
+        formCheckbox.addEventListener("click", function () {
+            toggleClass(formCheckbox, formCheckbox, 'check');
+            checkForm();
+        }, false);
+        startCheckbox.addEventListener("click", toggleStart, false);
+        start.addEventListener("click", toggleStartCheckBox, false);
+        nameInput.addEventListener("keyup", function () {
+            if(checkLenghtName()){
+                nameInput.classList.remove('error');
+                checkForm();
+            } else {
+                nameInput.classList.add('error');
+            }
+        });
+        emailInput.addEventListener("keyup", function () {
+            if(checkEmail()){
+                emailInput.classList.remove('error');
+                checkForm();
+            } else {
+                emailInput.classList.add('error');
+            }
+            checkForm();
+        });
+
+    }
+    function checkOrientation(m) {
+        if (m.matches && !isPlay) {
+            toggleGame();
+        }
+    }
+    function toggleClass(el, obj, name) {
+        if (el.classList.contains(name)) {
+            obj.classList.remove(name);
+        } else {
+            obj.classList.add(name);
+        }
+    }
+
+    function toggleStartCheckBox() {
+        setTimeout(checkRealCheckBox,300);
+    }
+
+    function checkRealCheckBox() {
+        console.log(document.getElementById("c2").checked);
+        if (document.getElementById("c2").checked) {
+            checkBoxContainer.classList.remove('error')
+        } else {
+            checkBoxContainer.classList.add('error')
+        }
+    }
+
+
+    function toggleStart() {
+        toggleStartCheckBox();
+        if (start.classList.contains('disable')) {
+            start.classList.remove('disable');
+            start.removeEventListener("click", toggleStartCheckBox, false);
+            start.addEventListener("click", startGame, false);
+        } else {
+            start.classList.add('disable');
+            start.addEventListener("click", toggleStartCheckBox, false);
+            start.removeEventListener("click", startGame, false);
+        }
+    }
+
+
+    function checkLenghtName() {
+        return(nameInput.value.length > 2);
+    }
+
+    function checkEmail() {
+        var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+        return(reg.test(emailInput.value));
+    }
+
+    function checkCheckBox() {
+        return(formCheckbox.classList.contains('check'));
+    }
+
+    function checkForm() {
+        if (checkCheckBox() && checkEmail() && checkLenghtName()) {
+            btnSendForm.addEventListener("click", hideForm, false);
+            btnSendForm.classList.remove('disable');
+        } else {
+            btnSendForm.removeEventListener("click", hideForm, false);
+            btnSendForm.classList.add('disable');
+        }
+    }
+
+    function toggleGame() {
+        if (initialized) {
+            if (isPlay) {
+                mario.game.pause();
+                stopMusic();
+                clearTimeout(resetTimer);
+                enableScroll();
+            } else {
+                if (lives > 0) {
+                    prepareGamePanel();
+                    mario.game.start(level);
+                    playMusic();
+                } else {
+                    resetGameParam();
+                    showlooseMessage();
+                    removeLives();
+                }
+                disableScroll();
+            }
+            isPlay = !isPlay;
+        }
+    }
+    function playMusic() {
+        if (!mainMusic.playing()) {
+            mainMusic.play();
+        }
+    }
+    function stopMusic() {
+        if (mainMusic.playing()) {
+            mainMusic.stop();
+        }
+    }
+    function startGame() {
+        if(!__scrollDisabled) {
+            disableScroll();
+        }
+        prepareGamePanel();
+        if (!gameStarted) {
+            drawLives();
+            gameStarted = true;
+        }
+        isPlay = true;
+        initialized = true;
+        playMusic();
+        mobileStart.style.display = looseMessage.style.display = 'none';
+        form.style.display = 'none';
+        level_1_doneMessage.style.display = 'none';
+        level_2_doneMessage.style.display = 'none';
+        level_3_doneMessage.style.display = 'none';
+        mario.game.start(level);
+        if (isFirstStart) {
+            ga('send', {
+                hitType: 'event',
+                eventCategory: 'startGame',
+                eventAction: 'firstStart',
+                eventLabel: 'первый запуск'
+            });
+            isFirstStart = false;
+        } else {
+            ga('send', {
+                hitType: 'event',
+                eventCategory: 'startGame',
+                eventAction: 'restart',
+                eventLabel: 'перезапущена игра'
+            });
+        }
+    }
+
+    function recountBalance() {
+        mario.bonus.play();
+        currentBalance -= currentBonusPrice;
+        balanceconteaner.innerText = currentBalance + "R";
+        progressValue += 5;
+        if (progressValue <= 100) {
+            progressBar.value = progressValue;
+        }
+    }
+
+    function prepareGamePanel() {
+        gamePanel.dataset.level = level;
+        switch (level) {
+            case 0:
+                setBalance(10000, 500);
+                break;
+            case 1:
+                setBalance(20000, 500);
+                break;
+            case 2:
+                setBalance(30000, 1000);
+                break;
+            case 3:
+                setBalance(40000, 1500);
+                break;
+            default:
+                alert('Что то не так');
+        }
+        progressBar.value = 0;
+        progressValue = 0;
+    }
+
+    function setBalance(balance, bonusPrice) {
+        currentBalance = balance;
+        currentBonusPrice = bonusPrice;
+        balanceconteaner.innerText = currentBalance + "R";
+    }
+
+
+    function levelDone() {
+        level += 1;
+        stopMusic();
+        switch (level) {
+            case 1:
+                enableScroll();
+                form.style.display = "flex";
+                ga('send', {
+                    hitType: 'event',
+                    eventCategory: 'levelDone',
+                    eventAction: 'level1',
+                    eventLabel: 'пройден уровень 1'
+                });
+                break;
+            case 2:
+                level_2_doneMessage.style.display = "flex";
+                ga('send', {
+                    hitType: 'event',
+                    eventCategory: 'levelDone',
+                    eventAction: 'level2',
+                    eventLabel: 'пройден уровень 2'
+                });
+                break;
+            case 3:
+                level_3_doneMessage.style.display = "flex";
+                ga('send', {
+                    hitType: 'event',
+                    eventCategory: 'levelDone',
+                    eventAction: 'level3',
+                    eventLabel: 'пройден уровень 3'
+                });
+                break;
+            case 4:
+                level_4_doneMessage.style.display = "flex";
+                ga('send', {
+                    hitType: 'event',
+                    eventCategory: 'levelDone',
+                    eventAction: 'level4',
+                    eventLabel: 'пройден уровень 4'
+                });
+                break;
+            default:
+                alert('Что то не так');
+        }
+        isPlay = false;
+    }
+
+    function resetGameParam() {
+        gameStarted = false;
+        lives = 3;
+        level = 0;
+    }
+    function showlooseMessage() {
+        looseMessage.style.display = "flex";
+    }
+    function reduceLives() {
+        lives--;
+    }
+    function gameEnd() {
+        stopMusic();
+        removeLives();
+        resetTimer = setTimeout(function () {
+            if (lives < 1) {
+                resetGameParam();
+                showlooseMessage();
+            } else {
+                playMusic();
+                startGame(level);
+            }
+        }, 2000);
+    }
+
+    function removeLives() {
+        liveContainer.removeChild(liveContainer.children[0]);
+    }
+
+
+    function drawLives() {
+        for (i = 0; i++, i <= lives;) {
+            var liveIcon = document.createElement("div");
+            liveContainer.appendChild(liveIcon);
+        }
+    }
+
+    var citySelect = function () {
+        var select = document.querySelector('.city');
+        var styledSelect = document.querySelector('.select-styled');
+        var selectOptions = select.querySelectorAll('option');
+        var styledSelectOptions = document.querySelector('.select-options');
+        var numOfOptions = selectOptions.length;
+        for (i = 0; i < numOfOptions; i++) {
+            var li = document.createElement('li');
+            li.innerText = selectOptions[i].innerText;
+            li.setAttribute('rel', selectOptions[i].getAttribute('value'));
+            styledSelectOptions.appendChild(li);
+            li.addEventListener("click", function (event) {
+                styledSelect.innerText = event.target.innerText;
+                toggleClass(styledSelectOptions, styledSelectOptions, 'hidden');
+                toggleClass(styledSelect, styledSelect, 'active');
+            });
+        }
+
+        styledSelect.addEventListener("click", function () {
+            toggleClass(styledSelectOptions, styledSelectOptions, 'hidden');
+            toggleClass(styledSelect, styledSelect, 'active');
+        });
+    };
+    /**
+     * @param {number} level Уровень
+     * @param {number} score Количество очков которое набрал пользователь
+     * @param {number} [pays] Количество бонусов pay которое набрал пользователь
+     * @param {number} [cards] Количество бонусов card которое набрал пользователь
+     * @return {boolean}
+     */
+    function isGameWin(level, score, pays, cards) {
+        switch (level) {
+            case 1:
+                return true;
+            case 2:
+                return true;
+            case 3:
+                return isGameWin(level - 1, score) && !!pays;
+            case 4:
+                return isGameWin(level - 1, score, pays) && !!cards;
+        }
+    }
+</script>
+</body>
+</html>

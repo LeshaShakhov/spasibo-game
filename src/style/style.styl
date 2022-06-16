@@ -1,0 +1,1380 @@
+@require "textures";
+@import "helper.styl";
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  -moz-text-size-adjust none
+  -webkit-text-size-adjust none
+  -ms-text-size-adjust none
+  font-family 'pixel_num'
+}
+*
+{
+  -webkit-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+size(width, height) {
+  width width;
+  height height;
+}
+
+absolute(left, top) {
+  position absolute;
+  left: left;
+  top: top;
+}
+
+absoluteAll(left, top, right, bottom) {
+  position absolute
+  left: left;
+  top: top;
+  right: right;
+  bottom: bottom;
+}
+displayFlex(flex-direction, align-items,justify-content){
+  display: flex;
+  flex-direction: flex-direction;
+  align-items align-items;
+  justify-content: justify-content;
+}
+
+boldText(font-size){
+  font-size: font-size;
+  font-weight: bold;
+}
+
+button(width, background, color, border-radius, font-size, padding){
+    display: block;
+    width: width;
+    background: background;
+    color: color;
+    border-radius: border-radius;
+    text-align: center;
+    text-decoration: none;
+    font-size: font-size;
+    padding: padding;
+    font-weight bold;
+}
+
+link(color)
+  text-decoration none
+  color color
+  border-bottom: 1px solid color;
+triangleBefore(link)
+  content ''
+  display: inline-block;
+  size(200px, 100%)
+  position absolute
+  right 100%
+  background-image link
+  background-size auto 100%
+  background-repeat no-repeat
+  background-position-x right;
+triangleAfter(link)
+  content ''
+  display: inline-block;
+  size(200px, 100%)
+  absolute(100%, 0)
+  background-image link
+  background-size auto 100%
+  background-repeat no-repeat
+bang()
+  content ''
+  display: inline-block;
+  size(160px, 137px)
+  position absolute
+  bottom 50%
+  left 50%
+  transform translate(-50%, 50%)
+  background-image: bang_levelAll;
+  background-position: 0 0;
+  background-size auto 100%
+  animation: bang 0.35s steps(3);
+.level-1 {
+  background-image bg_level1;
+  background-size auto 100%;
+  background-repeat repeat-x;
+  .user {
+    &__run {
+      background-image user_levelAll_run;
+    }
+
+    &__jump-up {
+      background-image user_level1_jump_up;
+    }
+
+    &__jump-down {
+      background-image user_level1_jump_down;
+    }
+  }
+  .animated-object__finish {
+    background-image finish_level1
+    background-size 100% auto
+    background-repeat no-repeat
+    animation: bonus 1.5s infinite ease-out;
+  }
+  .animated-object {
+    &__ground {
+      .animated-object__body {
+        background-image ground_level1
+        &:before {
+          triangleBefore(ground_triangleLeft_level1);
+        }
+        &:after {
+          triangleAfter(ground_triangleRight_level1)
+        }
+      }
+    }
+
+    &__block {
+      background-image block_level1
+    }
+
+    &__bonus {
+      background-image bonus_level1
+      animation: bonus 1.5s infinite ease-out;
+    }
+  }
+  .completed {
+    background-image: none
+    animation none
+    &:before {
+      bang()
+    }
+  }
+}
+
+
+
+.level-2 {
+  background-image bg_level2;
+  background-size auto 100%;
+  background-repeat repeat-x;
+  .user {
+    &__run {
+      background-image user_levelAll_run;
+    }
+
+    &__jump-up {
+      background-image user_level2_jump_up;
+    }
+
+    &__jump-down {
+      background-image user_level2_jump_down;
+    }
+  }
+  .animated-object__finish {
+    background-image finish_level2
+    background-size 100% auto
+    background-repeat no-repeat
+    animation: bonus 1.5s infinite ease-out;
+  }
+  .animated-object {
+    &__ground {
+      .animated-object__body {
+        background-image ground_level2
+        &:before {
+          triangleBefore(ground_triangleLeft_level2);
+        }
+        &:after {
+          triangleAfter(ground_triangleRight_level2)
+        }
+      }
+    }
+
+    &__block {
+      background-image block_level2
+    }
+
+    &__bonus {
+      background-image bonus_level2
+      animation: bonus 1.5s infinite ease-out;
+    }
+  }
+  .completed {
+    background-image: none
+    animation none
+    &:before {
+      bang()
+    }
+  }
+}
+
+.level-3 {
+  background-image bg_level3;
+  background-size auto 100%;
+  background-repeat repeat-x;
+  .user {
+    &__run {
+      background-image user_levelAll_run;
+    }
+
+    &__jump-up {
+      background-image user_level3_jump_up;
+    }
+
+    &__jump-down {
+      background-image user_level3_jump_down;
+    }
+  }
+  .animated-object__finish {
+    background-image finish_level3
+    background-size 100% auto
+    background-repeat no-repeat
+    animation: bonus 1.5s infinite ease-out;
+  }
+  .animated-object {
+    &__ground {
+      .animated-object__body {
+        background-image ground_level3
+        &:before {
+          triangleBefore(ground_triangleLeft_level3);
+        }
+        &:after {
+          triangleAfter(ground_triangleRight_level3)
+        }
+      }
+    }
+
+    &__block {
+      background-image block_level3
+    }
+  }
+  .bonus {
+    background-image bonus1_level3
+    animation: bonus 1.5s infinite ease-out;
+  }
+  .pay {
+    background-image bonus2_level3
+    animation: bonus 1.5s infinite ease-out;
+  }
+  .completed {
+    background-image: none
+    animation none
+    &:before {
+      bang()
+    }
+  }
+}
+
+
+.level-4 {
+  background-image bg_level4;
+  background-size auto 100%;
+  background-repeat repeat-x;
+  .user {
+    &__run {
+      background-image user_levelAll_run;
+    }
+
+    &__jump-up {
+      background-image user_level4_jump_up;
+    }
+
+    &__jump-down {
+      background-image user_level4_jump_down;
+    }
+  }
+  .animated-object__finish {
+    background-image finish_level4
+    background-size 100% auto
+    background-repeat no-repeat
+    animation: bonus 1.5s infinite ease-out;
+  }
+  .animated-object {
+    &__ground {
+      .animated-object__body {
+        background-image ground_level4
+        &:before {
+          triangleBefore(ground_triangleLeft_level4);
+        }
+        &:after {
+          triangleAfter(ground_triangleRight_level4)
+        }
+      }
+    }
+    &__block {
+      background-image block_level4
+    }
+  }
+  .bonus {
+    background-image bonus_level4
+    animation: bonus 1.5s infinite ease-out;
+  }
+  .pay {
+    background-image bonus2_level4
+    animation: bonus 1.5s infinite ease-out;
+  }
+  .card {
+    background-image bonus3_level4
+    animation: bonus 1.5s infinite ease-out;
+  }
+  .completed {
+    background-image: none
+    animation none
+    &:before {
+      bang()
+    }
+  }
+}
+.example-bg {
+  background transparent
+  background-size 100% 100%
+}
+
+.preload {
+  opacity 0;
+  position absolute;
+  left - 300%
+}
+
+#root {
+  absolute(0, 0);
+  size(100%, 100%);
+  overflow: hidden;
+  font-family 'pixel_num'
+  .move-container {
+    will-change: transform;
+    absolute(0, 0);
+    overflow: hidden;
+    size(100%, 100%);
+  }
+  #dead {
+    background-image userDead_levelAll
+    background-image-repeat: no-repeat;
+    animation dead 0.4s infinite, move 1.6s ease-in 0.6s;
+    animation-fill-mode: forwards;
+  }
+  .done {
+    background-image: none
+    animation none
+    &:before {
+      bang()
+    }
+  }
+
+  .animated-object {
+    absolute(0, auto);
+    bottom 0;
+    &__ground {
+      .animated-object__body {
+          absoluteAll(18px, 0, 18px, 0)
+          background-repeat repeat-x;
+          background-size auto 100%;
+          overflow visible
+      }
+    }
+
+    &__block {
+      background-repeat no-repeat;
+      background-size 100% 100%;
+    }
+
+    &__bonus {
+      background-repeat no-repeat;
+      background-size 100% 100%;
+    }
+  }
+
+  .user {
+    will-change: transform;
+    absolute(0, auto);
+    bottom 0;
+    background-image-repeat: no-repeat;
+    background-size auto 100%;
+
+    &__run {
+      background-position: 0 0;
+      animation: play 0.7s steps(7) infinite;
+    }
+  }
+}
+.game-panel
+  position fixed
+  left 0
+  top 0
+  width 100%
+  background #ffffff
+  height 60px
+  displayFlex(row, center, flex-start)
+  .lives
+    size(146px, 42px)
+    margin-left 10px
+    margin-bottom 6px
+    flex-shrink 0
+    div
+      height: 100%;
+      width 42px
+      object-fit contain
+      display inline-block
+  .logo
+    absoluteAll(auto, 5px, 10px, auto)
+    height: 83%;
+  .spacibo-bar
+    displayFlex(column, center, center)
+    size(341px, 80%)
+    absolute(50%, 50%)
+    transform: translate(-50%, -50%);
+    .balance-bar
+      displayFlex(row, flex-start, flex-end)
+      height: 100%;
+      width 100%
+      .balance
+        font-size: 33px;
+        margin-right 15px
+      .progress
+        size(236px, 27px)
+        position: relative;
+        overflow: hidden;
+        flex-shrink 0
+        progress
+          absolute(-3000px, auto)
+          size(0, 0)
+          overflow: hidden;
+      .progress-bar
+        overflow: hidden;
+        position relative
+        size(0, 100%)
+        absolute(0, 0)
+        transform: translateZ(0);
+        &:before
+          content ''
+          size(18px, 18px)
+          position: absolute;
+          top: -8px;
+          right: -9px;
+          transform: rotate(45deg);
+        &:after
+          content ''
+          size(18px, 18px)
+          position: absolute;
+          bottom: -8px;
+          right: -9px;
+          transform: rotate(45deg);
+      .progress-bg
+        position: relative;
+        overflow: hidden;
+        height 100%
+      for n in (0..100)
+        if (n % 5 == 0 )
+          progress[value=\"{n}\"] ~ .progress-bg .progress-bar
+            width: n*1%;
+        if (n == 100)
+          progress[value=\"{n}\"] ~ .progress-bg .progress-bar
+            &:before, &:after
+              display none
+    .level-name
+      width 100%
+      height 18px
+      flex-shrink 0
+      margin-bottom -2px
+.game-panel[data-level='0']
+  .lives
+    div
+      background live_icon_level1
+      background-size cover
+  .spacibo-bar
+    .level-name
+      background level_name_level1 50% 50%/auto 100% no-repeat;
+    .balance-bar
+      .balance
+        color color_level1;
+      .progress-bg
+        palette_level1();
+      .progress-bar
+        background: progress_level1;
+        background-size: auto 100%;
+        &:before
+          palette_level1();
+        &:after
+          palette_level1();
+.game-panel[data-level='1']
+  .lives
+    div
+      background live_icon_level2
+      background-size cover
+  .spacibo-bar
+    .level-name
+      background level_name_level2 50% 50%/auto 100% no-repeat;
+    .balance-bar
+      .balance
+        color color_level2;
+      .progress-bg
+        palette_level2();
+      .progress-bar
+        background: progress_level2;
+        background-size: auto 100%;
+        &:before
+          palette_level2();
+        &:after
+          palette_level2();
+.game-panel[data-level='2']
+  .lives
+    div
+      background live_icon_level3
+      background-size cover
+  .spacibo-bar
+    .level-name
+      background level_name_level3 50% 50%/auto 100% no-repeat;
+    .balance-bar
+      .balance
+        color color_level3;
+      .progress-bg
+        palette_level3();
+      .progress-bar
+        background: progress_level3;
+        background-size: auto 100%;
+        &:before
+          palette_level3();
+        &:after
+          palette_level3();
+.game-panel[data-level='3']
+  .lives
+    div
+      background live_icon_level4
+      background-size cover
+  .spacibo-bar
+    .level-name
+      background level_name_level4 50% 50%/auto 100% no-repeat;
+    .balance-bar
+      .balance
+        color color_level4;
+      .progress-bg
+        palette_level4();
+      .progress-bar
+        background: progress_level4;
+        background-size: auto 100%;
+        &:before
+          palette_level4();
+        &:after
+          palette_level4();
+.zaglushka
+  z-index 20
+
+.mobile, .form, .loose-screen, .zaglushka, .level_2, .level_3, .level_4, .win
+  .inner
+    transform: translate(-50%, -50%);
+  .logo
+    absoluteAll(auto, 7px, 7px, auto)
+    height: 24.5%;
+    max-height 80px
+.mobile
+  .logo
+    top: 7px;
+    right: 7px;
+  .inner
+    height 94%
+    .start
+      margin-bottom 2%
+    .title
+      displayFlex(row, center, flex-start)
+      size(89%, 25%)
+      text-align left!important
+      flex-shrink: 0;
+      img
+        margin-right 4%
+        width 10%
+        object-fit contain
+.mobile, .loose-screen
+  .inner
+    align-items: center;
+    width 100%
+    color #ffffff
+    absolute(50%, 50%)
+    .title
+      text-align center
+      font-size: 15px;
+      margin-bottom: 2%;
+    .start
+      text-align center
+      margin-bottom: 1%;
+      width 44%
+      user-select: all
+      img
+        width 100%
+    .checkbox-container
+      margin-bottom 3%
+    .tips
+      displayFlex(row, baseline, space-between)
+      width: 89%;
+      margin-bottom: 4%;
+      div
+        display flex
+        flex-direction column
+        width 20%
+        align-items: center;
+        img
+          margin-bottom 4%
+        p
+          text-align center
+          font-size 10px
+      div:nth-child(1)
+        width 16%
+        img
+          width 28%
+      div:nth-child(2)
+        img
+          width 49%
+      div:nth-child(3)
+        width 22%
+        img
+          width: 56%;
+          margin-left: 22%;
+      div:nth-child(4)
+        margin-top -5%
+        width 22%
+        img
+          width 63%
+.desktop, .win
+  .animals
+    absoluteAll(0, 0, 0, 0)
+.desktop
+  .animals
+    background url('/img/messages/screens_desktop_animals.png') no-repeat 50% 50%
+    background-size cover
+  .logo
+    absoluteAll(auto, 7px, 7px, auto)
+    height: 16.5%;
+  .inner
+    align-items: center;
+    size(54%, 50.5%)
+    absolute(50%, 34.5%)
+    transform: translate(-50%, 0);
+    min-width 430px
+    min-height 220px
+    .main-text
+      width 100%
+    .container
+      displayFlex(row, center, center)
+      absolute(50%, 48%)
+      transform: translateX(-50%);
+      height: 52%;
+      .qr
+        height 100%
+        width auto
+        margin-right: 7%;
+        object-fit contain
+      div
+        color #ffffff
+        p
+          font-size: 30px;
+          padding: 0;
+          margin: 0;
+          white-space: nowrap;
+          margin-bottom: 5.5%;
+          line-height: 20px;
+        p:nth-child(3)
+          font-size 14px
+          margin-top -2%
+        a
+          margin-top 10%
+          button(62%, #fff, #34bc98, 4px, 20px, 14px 0)
+          user-select: all
+    .title
+      width 100%
+      margin-bottom: 4%;
+
+
+.zaglushka
+  .logo
+    absoluteAll(auto, 7px, 7px, auto)
+    height: 9%;
+  .inner
+    align-items: center;
+    absolute(50%, 56%)
+    width: 64%;
+    .title
+      font-size 16px
+      margin-bottom: 5%;
+      text-align center
+    .rotate-text
+      width 100%
+      margin-bottom: 17%;
+    .rotate-image
+      width 46%
+      margin-right: 14%;
+.form
+  display none
+  .prize
+    displayFlex(row, center, flex-start)
+    height 25%
+    absolute(2%, 4%)
+    img
+      height 100%
+      width auto
+      margin-right: 5%;
+      object-fit contain
+    p
+      font-size 12px
+      text-align left
+      flex-shrink 0
+      line-height: 16px;
+      margin-bottom: 2%;
+  .inner
+    absolute(53%, 61%)
+    width: 38%;
+    align-items flex-start!important
+    .title
+      boldText(24px)
+      margin-bottom: 3%;
+    form
+      displayFlex(column, stretch, flex-start)
+      width: 100%;
+      user-select: all
+      div
+        position relative
+        label
+          absolute(0, auto)
+          transform: translateX(-100%);
+          margin: 4% 0 0 -3%;
+          font-size: 13px;
+          white-space: nowrap;
+        input
+          border-radius 0
+          outline none
+          border 1px solid #ffffff
+          box-shadow none
+          background none
+          width 100%
+          line-height: 22px;
+          margin-bottom: 3%;
+          padding: 4px 15px;
+          background rgba(255, 255, 255, 0.15)
+          color: #ffffff;
+          box-sizing: border-box;
+          user-select: all
+        input:focus
+          outline none
+          box-shadow none
+          background none
+          user-select: all
+        .error
+          border: 1px solid #ff0000;
+          background: rgba(255, 0, 0, 0.1);
+      button
+        button( 73%, #ffffff, #32bc98, 4px, inherit, 3% 0)
+        outline none
+        margin-bottom 3%
+        margin-top 5%
+        user-select: all
+        border: 1px solid #ffffff;
+        box-sizing: border-box;
+      .disable
+        color #ffffff!important
+        background none!important
+        border: 1px solid #ffffff!important;
+        font-weight: 100!important;
+        opacity: 0.4!important;
+      button:focus
+        box-shadow none
+        border none
+        user-select: all
+      .checkbox-container
+        label
+          transform none
+          position static
+          margin 0
+          font-size 12px
+        a
+          margin-bottom: -1px;
+          link(#ffffff)
+          user-select: all
+.loose-screen
+  .inner
+    width 57%
+    top 50%
+    .title
+      margin-bottom 4%
+    .main-text
+      width 72%
+      margin-bottom 6%
+    a
+      button( 73%, #ffffff, #32bc98, 4px, inherit, 3% 0)
+      user-select: all
+.message-box
+  absoluteAll(0, 0, 0, 0)
+  font-family: 'Arial','Helvetica','Roboto',sans-serif;
+  background url('/img/messages/spasiboGame_screens_desktop_bg.jpg') no-repeat 50% 50%
+  background-size cover
+  overflow hidden
+  color #ffffff
+  p
+    margin 0
+    padding 0
+  .logo
+    position: absolute;
+  .inner
+    displayFlex(column, center, space-between)
+    position absolute
+.checkbox-container
+  font-size 11px
+  displayFlex(row, center, flex-start)
+  label
+    position relative
+    displayFlex(row, center, flex-start)
+    white-space: nowrap;
+    p
+      display: inline-block;
+      flex-shrink: 0;
+  a
+    link(#ffffff)
+    user-select: all
+  input[type="checkbox"]
+    display:none;
+    user-select: all
+  input[type="checkbox"] + label span
+    size(20px, 20px)
+    vertical-align:middle;
+    border: 2px solid #ffffff;
+    border-radius: 17%;
+    flex-shrink 0
+    margin-right 5%
+    user-select: all
+  input[type="checkbox"]:checked + label span
+    background:url(/img/messages/screens_reg_galka.png) 36% 0 no-repeat;
+    background-size: 85%;
+    user-select: all
+.error
+  input[type="checkbox"] + label span
+    border: 2px solid #ff0000;
+    background: rgba(255, 0, 0, 0.1);
+  label
+    p
+      color #ff0000
+  a
+    color #ff0000
+    border-bottom 1px solid #ff0000
+.loose-screen
+  display none
+  .inner
+    left 50%
+.level_2, .level_3, .level_4
+  .inner
+    justify-content center
+.level_2, .level_3, .level_4, .win
+  .animals
+    background url('/img/messages/spasibogame_screens_winne_bg.png') no-repeat 50% 50%
+    background-size cover
+  .inner
+    size(100%, 100%)
+    transform translate(0)
+    font-size: 10px;
+    .title
+      boldText(20px)
+      text-align: center;
+    .rules
+      align-self: flex-end;
+      line-height: 13px;
+      width: 59%;
+      ol
+        margin 0
+        padding 0
+        list-style-position inside
+        li:nth-child(2)
+          margin-top -10px
+        li:nth-child(3)
+          margin-top -10px
+        li
+          padding 0
+          margin 0
+          .phone, .card
+            display inline-block
+            margin-bottom: -1px;
+            position relative
+          .phone
+            size(18px, 30px)
+            background: url(/img/messages/screens_level_4_phone.png) 50% 50% no-repeat;
+            background-size contain
+          .card
+            size(30px, 20px)
+            background: url(/img/messages/screens_level_4_card.png) 50% 50% no-repeat;
+            background-size contain
+.level_4, .level_3
+  .inner
+    .title
+      margin-bottom 1.8%
+    .main-text
+      margin-bottom 2.4%
+      width 60%
+    .rules
+      line-height: 12px;
+      padding-right: 2%;
+    a
+      button(40%, #ffffff, #32bc98, 4px, 16px, 2% 0)
+      margin-top 4.5%
+      user-select: all
+.level_2
+  .inner
+    absolute(0, 6%)
+    .title
+      margin-bottom 2%
+    .main-text
+      margin-bottom 4%
+      width 49.1%
+    .rules
+      line-height: 13px;
+      padding-right: 4%;
+    a
+      button(40%, #ffffff, #32bc98, 4px, 16px, 2% 0)
+      margin-top 3%
+      user-select: all
+  .totem-animal
+    width: 27%;
+    absolute(7%, 36%)
+.level_3
+  .inner
+    absolute(0, 6%)
+    .main-text
+      width 51.4%
+  .totem-animal
+    width: 38%;
+    absolute(1%, 40%)
+.level_4
+  .inner
+    absolute(0, 6%)
+  .totem-animal
+    width: 30%;
+    absolute(3%, 42%)
+.win
+  .inner
+    absolute(0, 0)
+  .animals
+    background url('/img/messages/spasibogame_screens_winne_bg.png') no-repeat 50% 50%
+    background-size cover
+  .inner
+    justify-content center
+    font-size 17px
+    .main-text
+      width 80%
+      margin-bottom 5%
+    p
+      text-align center
+      a
+        link(#ffffff)
+        user-select: all
+.select-hidden
+  display: none;
+  visibility: hidden;
+  padding-right: 10px;
+.select
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  font-size: 16px;
+  color: #ffffff;
+  width: 100%;
+  height: 34px;
+.select-styled
+  position: absolute;
+  user-select: all;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 6px 15px;
+  box-sizing: border-box;
+  border: 1px solid #ffffff;
+  width: 100%;
+  background rgba(255, 255, 255, 0.15)
+  transition all 0.2s ease-in;
+  &:after
+    content:"";
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    border-color: #ffffff transparent transparent transparent;
+    position: absolute;
+    top: 13px;
+    right: 10px;
+  &:active, &.active, &:focus
+    background: #32bc98;;
+    &:after
+      top: 7px;
+      border-color: transparent transparent #ffffff transparent;
+.hidden
+  display none
+.select-options
+  position: absolute;
+  top: 91%;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-color: #32bc98;
+  border: 1px solid #ffffff;
+  border-top none
+  color #ffffff
+  overflow-y: scroll;
+  height: 187%;
+  user-select: all
+  li
+    margin: 0;
+    padding: 6px 0;
+    text-indent: 15px;
+    border-top: 1px solid #ffffff;
+    &[rel="hide"]
+      display: none;
+@keyframes play {
+  to { background-position: 100% 0; }
+}
+@keyframes dead {
+  50% {
+    opacity 1
+  }
+  51% {
+    opacity 0
+  }
+  100% {
+    opacity 0
+  }
+}
+@keyframes move {
+  100% {
+    bottom: -100%;
+  }
+}
+@keyframes bonus {
+  0% {
+    bottom 0
+  }
+  50% {
+    bottom 2%
+  }
+  100% {
+    bottom 0
+  }
+}
+@keyframes bang {
+  to { background-position: 100% 0; }
+}
+@media screen and (orientation: landscape)
+  .zaglushka
+    display none
+@media screen and (max-width: 568px) and (orientation: landscape)
+  .game-panel
+    height: 52px;
+    .lives
+      width: 103px;
+      height: 29px;
+      margin-left: 6px;
+      margin-bottom 10px;
+      div
+        width: 33px;
+    .spacibo-bar
+      width: 280px;
+      height: 80%;
+      .balance-bar
+        .balance
+          font-size: 29px;
+          margin-right: 12px;
+        .progress
+          width: 184px;
+          height: 22px;
+      .level-name
+        height: 14px;
+  .loose-screen
+    .inner
+      .title
+        margin-bottom 5%
+        font-size: 12px;
+  .mobile
+    .inner
+      .title
+        margin-bottom -1%
+        font-size: 11px;
+  .mobile, .loose-screen
+    .inner
+      .start
+        margin-bottom: 1%;
+        width: 40%;
+      .checkbox-container
+        margin-bottom: 1%;
+        margin-top: -0.5%;
+        font-size: 10px;
+        input[type="checkbox"] + label span
+          margin-right: 2%;
+          size(15px, 15px)
+      .tips
+        div:nth-child(2)
+          width 16%
+          img
+            width: 58%;
+        div:nth-child(3)
+          width: 28%;
+          img
+            width: 38%;
+            margin-left: 15%;
+        div:nth-child(4)
+          width 24%
+        div
+          p
+            line-height 9px
+  .form
+    .inner
+      width: 35%;
+      top: 59%;
+      .title
+        font-size: 19px;
+        margin-bottom: 2%;
+      form
+        div
+          input
+            padding: 0 10px;
+          label
+            margin: 3% 0 0 -3%;
+            font-size: 11px;
+        button
+          width: 61%;
+          padding: 3% 0;
+          margin-bottom: 2%;
+          margin-top: -1%;
+          font-size: 12px;
+        .checkbox-container label
+          font-size: 10px;
+    .prize
+      left: 6%;
+      p
+        font-size: 8px;
+        line-height: 10px;
+        width: 50%;
+  .select-options
+    font-size: 10px;
+    top: 71%;
+    height: 146%;
+  .checkbox-container input[type="checkbox"] + label span
+    size(15px, 15px)
+  .select-styled
+    padding: 5px 10px;
+    &:after
+      top: 10px;
+      &:after
+        top: 4px;
+  .select
+    font-size: 12px;
+  .level_4, .level_3, .level_2
+    .inner
+      .rules
+        br
+          display none
+        p:nth-child(1)
+          margin-bottom 1%
+        p
+          br
+            display block
+        ol
+          li
+            &:nth-child(2)
+              margin-top -18px
+            br
+              display block
+            .card
+              vertical-align text-top
+  .level_2
+    .inner
+      .rules
+        padding-right 1%
+      .title
+        margin-bottom: 1%
+      .main-text
+        margin-bottom: 2%;
+      .totem-animal
+        absolute(7%, 34%)
+        width: 24%;
+  .level_2, .level_3, .level_4, .win
+    .inner
+      .rules
+        width: 63%;
+        ol
+          li:nth-child(3)
+            margin-bottom: -7px;
+  .level_3
+    .totem-animal
+      width: 36%;
+      top: 34%;
+  .level_4
+    .inner
+      top: 5%;
+    .totem-animal
+      width: 28%;
+      top: 38%;
+  .level_4, .level_3
+    .inner
+      .title
+        margin-bottom 1%
+      .main-text
+        margin-bottom 2%
+      a
+        margin-bottom: 2%;
+        font-size: 12px
+        width: 40%;
+        padding: 2% 0;
+        margin-top: 0.5%;
+      .rules
+        p:nth-child(1)
+          margin-bottom: 0.4%;
+@media screen and (min-width: 736px) and (max-width: 811px) and (orientation: landscape)
+  .message-box
+    .logo
+      max-height 100px
+  .mobile, .loose-screen
+    .inner
+      .title
+        margin-bottom: 1%;
+        img
+          width 11%
+      start
+        width: 49%;
+      .checkbox-container
+        font-size: 14px;
+      .tips
+        width 94%;
+        div
+          &:nth-child(3)
+            width 26%
+            img
+              width 47%
+          p
+            font-size 13px;
+  .loose-screen
+    .inner
+      .title
+        margin-bottom 5%
+        font-size 19px
+  .form
+    .prize
+      left 4%
+    .inner
+      .title
+        margin-bottom: 5%;
+      form
+        button
+          width 76%
+          margin-top: 3%;
+    .prize
+      p
+        font-size: 14px;
+  .level_4, .level_3, .level_2
+    .inner
+      .rules
+        font-size 12px
+        line-height 14px
+  .level_4, .level_3
+    .inner
+      .rules
+        br
+          display none
+        p:nth-child(1)
+          margin-bottom 1%
+        p
+          br
+            display block
+        ol
+          li
+            &:nth-child(2)
+              margin-top -18px
+            br
+              display block
+            .card
+              vertical-align text-top
+  .level_2
+    .totem-animal
+      absolute(9%, 39%)
+      width 24%
+    .inner
+      top 4%
+  .level_3
+    .inner
+      absolute(0, 3%)
+    .totem-animal
+      width: 36%;
+  .level_4
+    .totem-animal
+      absolute(3%, 39%)
+  .win
+    .inner
+      font-size: 20px;
+      .main-text
+        width: 80%;
+@media screen and (min-width: 812px) and (orientation: landscape)
+  .game-panel .logo
+    right 20px
+  .message-box
+    .logo
+      right: 55px;
+  .mobile, .loose-screen
+    .inner
+      .title
+        width 85%
+        font-size 17px
+      .start
+        margin-bottom: 0.5%;
+        width 35%
+      .checkbox-container
+        margin-bottom 2%
+      .tips
+        div:nth-child(1)
+          img
+            width 25%
+        div:nth-child(2)
+          img
+            width 45%
+        div:nth-child(3)
+          img
+            width: 55%;
+        div:nth-child(4)
+          img
+            width 57%
+  .loose-screen
+    .inner
+      .title
+        margin-bottom 4%
+  .mobile
+    .inner
+      .title
+        margin-bottom 0
+  .form
+    .inner
+      left: 53%;
+      top: 61%;
+      width: 36%;
+      .title
+        margin-bottom 1%
+      form
+        button
+          margin-top 3%
+          padding 2% 0
+    .prize
+      left: 7.5%;
+  .level_3
+    a
+      margin-top 4.5%
+    .totem-animal
+      width: 30%;
+      absolute(8%, 41%)
+  .level_4
+    .inner
+      a
+        margin-top 1.5%
+  .level_4, .level_3
+    .inner
+      .title
+        margin-bottom 0.8%
+      .main-text
+        margin-bottom 1.4%
+  .win
+    .inner
+      .main-text
+        width: 65%;
+
+
+
+
